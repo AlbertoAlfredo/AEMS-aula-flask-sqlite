@@ -1,24 +1,19 @@
-import sqlite3
+import bd
 
-conn = sqlite3.connect("banco.db")
+produto = {
+    "nome": "Paçoca Rolha",
+    "preco": 1.50,
+    "detalhes": "Paçoquinha rolha extremamente seca"
+}
 
-cursor = conn.cursor()
+#bd.create("Chocolate Belga", 23.80, "Chocolate que nunca comi mas ouço falar")
 
-cursor.execute(
-    """
-    CREATE TABLE produtos (
-        id INTEGER PRIMARY KEY,
-        nome TEXT,
-        preco INTEGER,
-        detalhes TEXT
-    )
-    """
-)
+#print(bd.read(3))
 
-def preco_para_banco(prec):
-    preco = int(prec * 100 )
-    return preco
+# bd.update(2, "Chocolate Barato", 1.50, "Chocolate que sempre comi")
 
-def preco_para_soft(prec):
-    preco = float(prec)/100
-    return preco
+# print(bd.read(2))
+
+bd.delete(2)
+
+print(bd.read())
